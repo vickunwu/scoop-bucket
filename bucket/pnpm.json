@@ -9,6 +9,10 @@
             "hash": "19a6c87039501fabf093995c192e785ce3fd28bd679fba44fd8956818ce9c062"
         }
     },
+    "notes": [
+        "To install the LTS version of Node.js, use following command:",
+        "pnpm env use --global lts"
+    ],
     "bin": "pnpm.exe",
     "persist": [
         "store",
