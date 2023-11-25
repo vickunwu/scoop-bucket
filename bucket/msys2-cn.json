@@ -280,9 +280,9 @@
         [
             "git.bat"
         ],
-		[
-		    "mingw64\\bin\\git-lfs"
-		]
+        [
+            "mingw64\\bin\\git-lfs"
+        ]
     ],
     "shortcuts": [
         [

@@ -30,11 +30,11 @@
         "  deepmodeling: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/",
         "  nvidia: https://mirrors.sustech.edu.cn/anaconda-extra/cloud/",
         "\"@ | Set-Content -Path \"$dir\\mamba\\.condarc\" -Force",
-		"New-Item -Path \"$HOME\\pip\" -ItemType Directory -Force | Out-Null",
+        "New-Item -Path \"$HOME\\pip\" -ItemType Directory -Force | Out-Null",
         "@\"",
         "[global]",
         "index-url=https://pypi.tuna.tsinghua.edu.cn/simple",
-		"cache-dir=$dir\\pip-cache",
+        "cache-dir=$dir\\pip-cache",
         "[install]",
         "trusted-host=pypi.tuna.tsinghua.edu.cn",
         "\"@ | Set-Content -Path \"$HOME\\pip\\pip.ini\" -Force"
