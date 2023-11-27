@@ -19,6 +19,9 @@
     ],
     "installer": {
         "script": [
+            "# Force home dir to windows USERPROFILE",
+            "$homeDirControl = \"$dir\\etc\\nsswitch.conf\"",
+            "(Get-Content $homeDirControl) -replace 'db_home: cygwin desc', 'db_home: windows' | Set-Content $homeDirControl",
             "# Insert the Invoke-ExternalCommand2 function here",
             "function Invoke-ExternalCommand2 {",
             "    [CmdletBinding(DefaultParameterSetName = \"Default\")]",
@@ -158,8 +161,7 @@
         ]
     },
     "env_set": {
-        "MSYS": "winsymlinks:nativestrict",
-        "HOME": "$HOME"
+        "MSYS": "winsymlinks:nativestrict"
     },
     "uninstaller": {
         "script": [
@@ -290,7 +292,6 @@
             "MinGW64"
         ]
     ],
-    "persist": "home",
     "checkver": {
         "url": "https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/",
         "re": "msys2-base-x86_64-(\\d+).tar.xz",
