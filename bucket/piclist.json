@@ -1,12 +1,12 @@
 {
-    "version": "2.6.7",
+    "version": "2.6.8",
     "description": "Picture upload and management",
     "homepage": "https://piclist.cn/en",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Kuingsmile/PicList/releases/download/v2.6.7/PicList-Setup-2.6.7-x64.exe#/dl.7z",
-            "hash": "sha512:e7bce159bbe7bef2e6e6629087562c9b824723f8e380b4520d7dba2c5b8a0cf9521a1f27bb5afa4d7441984f70aa1ee28d0a64509857cbd35d0b607d03dfc578",
+            "url": "https://github.com/Kuingsmile/PicList/releases/download/v2.6.8/PicList-Setup-2.6.8-x64.exe#/dl.7z",
+            "hash": "a67c3165dccbadc5d88c0f47a5594cb55d25ecea447c9fb47b725e91204f0178",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
