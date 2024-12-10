@@ -10,12 +10,13 @@
             "extract_dir": "msys64"
         }
     },
-    "pre_install": [
-        "# Git-wrap.bat",
-        "Set-Content -Value \"@echo off`nsetlocal`nrem If you don't add path for msys2 into %PATH%, enable following line.`nset PATH=$dir\\usr\\bin;%PATH%`nif `\"%1`\" equ `\"rev-parse`\" goto rev_parse`ngit %*`ngoto :eof`n:rev_parse`nfor /f %%1 in ('git %*') do cygpath -w %%1\" -Path \"$dir\\git.bat\""
+    "env_add_path": [
+        "usr\\bin"
     ],
     "installer": {
         "script": [
+            "$gitWrap = $(Join-Path $(Find-BucketDirectory -Root -Name vickunwu) scripts/git-wrap.exe)",
+            "Copy-Item -Path $gitWrap -Destination $dir",
             "# Force home dir to windows USERPROFILE",
             "$homeDirControl = \"$dir\\etc\\nsswitch.conf\"",
             "(Get-Content $homeDirControl) -replace 'db_home: cygwin desc', 'db_home: windows' | Set-Content $homeDirControl",
@@ -154,7 +155,8 @@
             "# 0x03: Restore saved_packages.txt",
             "if (Test-Path \"$persist_dir\\home\\saved_packages.txt\") {",
             "    Write-Host \"To restore installed packages, you need to run 'pacman -S --needed `$(cat /home/saved_packages.txt)' inside MSYS2\" -ForegroundColor DarkCyan",
-            "}"
+            "}",
+            "Write-Host \"You can set `git.path` to $dir\\\\git-wrap.exe in `VSCode`\" -ForegroundColor Yellow"
         ]
     },
     "env_set": {
@@ -275,8 +277,7 @@
             "msys2_shell.cmd",
             "mingw64",
             "-defterm -here -no-start -mingw64"
-        ],
-        "git.bat"
+        ]
     ],
     "shortcuts": [
         [
