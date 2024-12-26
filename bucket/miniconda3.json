@@ -1,5 +1,5 @@
 {
-    "version": "23.5.2-0",
+    "version": "24.9.2-0",
     "description": "A cross-platform, Python-agnostic binary package manager.",
     "homepage": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/",
     "license": "BSD-3-Clause",
@@ -9,15 +9,16 @@
         "",
         "Miniconda3 drops support for 32-bit CPUs from v22.11.1. If you are running a 32-bit system, please install miniconda3-4.12.0 from the Versions bucket.",
         "",
-        "If you want to use conda in a Msys2 environment with zsh, you can add following command into your .zshrc file:",
+        "If you want to use conda in a MSYS2 environment with zsh, you can add following command into your .zshrc file:",
         "eval \"$(\"$(cygpath \"$dir\\scripts\\conda.exe\")\" \"shell.zsh\" \"hook\" | sed -e 's/\"$CONDA_EXE\" $_CE_M $_CE_CONDA \"$@\"/\"$CONDA_EXE\" $_CE_M $_CE_CONDA \"$@\" | tr -d \\x27\\\\r\\x27/g')\""
     ],
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_23.5.2-0-Windows-x86_64.exe#/setup.exe",
-            "hash": "e15638645b34921098a3f760fd8af07e53a427f59b99a0f049420a7751cbbc05"
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py312_24.9.2-0-Windows-x86_64.exe#/setup.exe",
+            "hash": "3a8897cc5d27236ade8659f0e119f3a3ccaad68a45de45bfdd3102d8bec412ab"
         }
     },
+    "pre_install": "if ($dir -match ' ') { error 'The installation directory cannot include a space'; break}",
     "installer": {
         "script": [
             "# Using Start-Process as a workaround because the installer will not work properly when args are quoted (e.g. \"`\"/S`\"\")",
@@ -34,6 +35,7 @@
         ]
     },
     "post_install": [
+        "Remove-Item \"$dir\\..\\setup.exe\" -Force | Out-Null",
         "@\"",
         "auto_activate_base: false",
         "channels: ",
@@ -75,17 +77,17 @@
         "pip-cache"
     ],
     "checkver": {
-        "url": "https://docs.conda.io/en/latest/miniconda.html",
-        "regex": "Miniconda3-py310_([\\d.-]+)-Windows"
+        "url": "https://docs.anaconda.com/free/miniconda/miniconda-other-installer-links/",
+        "regex": "Miniconda3-py(?<py>\\d+)_([\\d.-]+)-Windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py310_$version-Windows-x86_64.exe#/setup.exe"
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py$matchPy_$version-Windows-x86_64.exe#/setup.exe"
             }
         },
         "hash": {
-            "url": "https://docs.conda.io/en/latest/miniconda.html",
+            "url": "https://docs.anaconda.com/free/miniconda/miniconda-other-installer-links/",
             "regex": "(?sm)$basename.*?>$sha256<"
         }
     }
