@@ -5,12 +5,8 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Kuingsmile/PicList/releases/download/v2.9.9/PicList-Setup-2.9.9-x64.exe#/dl.7z",
-            "hash": "6e0715b371f789099872aa066ddf4bdbd6ffdf3c9d156f74259dd6cb1ad2cca1",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
-            ]
+            "url": "https://github.com/Kuingsmile/PicList/releases/download/v2.9.9/PicList-2.9.9-x64-portable.exe#/PicList.exe",
+            "hash": "36aec48b49177840cd6b0e5a9b3ba6434a69f1f07b5f241321e31614a7b89686"
         }
     },
     "bin": "PicList.exe",
@@ -28,7 +24,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Kuingsmile/PicList/releases/download/$matchTag/PicList-Setup-$version-x64.exe#/dl.7z"
+                "url": "https://github.com/Kuingsmile/PicList/releases/download/$matchTag//PicList-$version-x64-portable.exe#/PicList.exe"
             }
         }
     }
