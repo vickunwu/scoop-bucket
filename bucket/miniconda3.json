@@ -1,5 +1,5 @@
 {
-    "version": "24.9.2-0",
+    "version": "25.5.1-0",
     "description": "A cross-platform, Python-agnostic binary package manager.",
     "homepage": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/",
     "license": "BSD-3-Clause",
@@ -14,8 +14,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py312_24.9.2-0-Windows-x86_64.exe#/setup.exe",
-            "hash": "3a8897cc5d27236ade8659f0e119f3a3ccaad68a45de45bfdd3102d8bec412ab"
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py313_25.5.1-0-Windows-x86_64.exe#/setup.exe",
+            "hash": "faaca26e9c233fb7d17e638395e4fa32d29c2c70c714ff3f57f434e9d0dbb238"
         }
     },
     "pre_install": "if ($dir -match ' ') { error 'The installation directory cannot include a space'; break}",
