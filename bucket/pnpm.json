@@ -13,7 +13,14 @@
         "To install the LTS version of Node.js, use following command:",
         "pnpm env use --global lts"
     ],
-    "bin": "pnpm.exe",
+    "bin": [
+        "pnpm.exe",
+        [
+            "pnpm.exe",
+            "pnpx",
+            "dlx"
+        ]
+    ],
     "persist": [
         "store",
         "global",
