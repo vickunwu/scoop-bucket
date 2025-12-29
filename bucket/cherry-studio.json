@@ -1,21 +1,19 @@
 {
-    "version": "1.1.18",
+    "version": "1.7.8",
     "description": "A desktop client that supports for multiple LLM providers.",
-    "homepage": "https://github.com/kangfenmao/cherry-studio",
-    "license": {
-        "identifier": "Apache-2.0",
-        "url": "https://github.com/kangfenmao/cherry-studio/raw/refs/heads/main/LICENSE"
+    "homepage": "https://cherry-ai.com",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
     },
-    "url": "https://github.com/kangfenmao/cherry-studio/releases/download/v1.1.18/Cherry-Studio-1.1.18-setup.exe#/dl.7z",
-    "hash": "f6851d4d69840587f59ba4a78c0dd126c6867686050e165e13363b1bd27d6526",
     "architecture": {
         "64bit": {
-            "installer": {
-                "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-                ]
-            }
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.8/Cherry-Studio-1.7.8-x64-portable.exe#/cherry-studio.exe",
+            "hash": "7dc07e8143f747d75908fbc5d707ccdf4e10f7a5fb040ae4a9bc298b368e7b9f"
+        },
+        "arm64": {
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.8/Cherry-Studio-1.7.8-arm64-portable.exe#/cherry-studio.exe",
+            "hash": "cbf8a47d416074fa27dd6c629f81f03823d967dc09b5e2e4f34609cbbdea9d21"
         }
     },
     "persist": "data",
@@ -27,17 +25,26 @@
         "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Cherry Studio.lnk\" -ErrorAction SilentlyContinue -Confirm:$false -Force",
         "New-Item -ItemType Junction -Path $env:APPDATA\\CherryStudio -Target $persist_dir\\data | Out-Null"
     ],
-    "uninstaller": {
-        "script": "Remove-Item $env:APPDATA\\CherryStudio -Force -Recurse"
-    },
     "shortcuts": [
         [
-            "Cherry Studio.exe",
+            "cherry-studio.exe",
             "Cherry Studio"
         ]
     ],
-    "checkver": "github",
+    "uninstaller": {
+        "script": "Remove-Item $env:APPDATA\\CherryStudio -Force -Recurse"
+    },
+    "checkver": {
+        "github": "https://github.com/CherryHQ/cherry-studio"
+    },
     "autoupdate": {
-        "url": "https://github.com/kangfenmao/cherry-studio/releases/download/v$version/Cherry-Studio-$version-setup.exe#/dl.7z"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-portable.exe#/cherry-studio.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-arm64-portable.exe#/cherry-studio.exe"
+            }
+        }
     }
 }
