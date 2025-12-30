@@ -41,7 +41,7 @@
         "VBoxNetNAT.exe",
         "VBoxSDS.exe",
         "VBoxSVC.exe",
-        "VBoxTestOGL.exe",
+        "VBoxWebSrv.exe",
         "VirtualBox.exe",
         "VirtualBoxVM.exe"
     ],
