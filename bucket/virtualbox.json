@@ -18,7 +18,7 @@
             "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi`\"\", '/qn', '/norestart', \"INSTALLDIR=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
             "Start-Process icacls -ArgumentList @(\"`\"$dir`\"\", '/grant', 'Everyone:F', '/T') -Wait -Verb RunAs | Out-Null",
             "Remove-Item \"$dir\\setup.exe\", \"$dir\\setup.msi\"",
-            "Remove-Item \"$env:USERPROFILE\\Desktop\\Oracle VM VirtualBox.lnk\""
+            "Remove-Item \"$env:PUBLIC\\Desktop\\Oracle VirtualBox.lnk\""
         ]
     },
     "uninstaller": {
