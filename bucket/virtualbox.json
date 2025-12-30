@@ -13,12 +13,12 @@
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
             "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('--extract', '-path', \"$dir\", '--silent') | Out-Null",
-            "Get-ChildItem \"$dir\\VirtualBox*.msi\" | Rename-Item -NewName 'setup.msi'",
+            "Get-ChildItem \"$dir\\VirtualBox*amd64.msi\" | Rename-Item -NewName 'setup.msi'",
+            "Get-ChildItem \"$dir\\VirtualBox*arm64.msi\" | Remove-Item",
             "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi`\"\", '/qn', '/norestart', \"INSTALLDIR=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
             "Start-Process icacls -ArgumentList @(\"`\"$dir`\"\", '/grant', 'Everyone:F', '/T') -Wait -Verb RunAs | Out-Null",
             "Remove-Item \"$dir\\setup.exe\", \"$dir\\setup.msi\"",
-            "Remove-Item \"$env:PUBLIC\\Desktop\\Oracle VM VirtualBox.lnk\"",
-            "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Oracle VM VirtualBox\""
+            "Remove-Item \"$env:USERPROFILE\\Desktop\\Oracle VM VirtualBox.lnk\""
         ]
     },
     "uninstaller": {
@@ -36,7 +36,6 @@
         "VBoxDTrace.exe",
         "VBoxExtPackHelperApp.exe",
         "VBoxHeadless.exe",
-        "vbox-img.exe",
         "VBoxManage.exe",
         "VBoxNetDHCP.exe",
         "VBoxNetNAT.exe",
