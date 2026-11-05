@@ -10,7 +10,7 @@
             "extract_dir": "msys64"
         }
     },
-    "env_add_path": "mingw64\\bin",
+    "env_add_path": "ucrt64\\bin",
     "installer": {
         "script": [
             "# Force home dir to windows USERPROFILE",
@@ -22,7 +22,6 @@
             "# 0x01: Edit pacman.conf (Using Never for GPG and TUNA mirrors)",
             "$pacmanConf = \"$dir\\etc\\pacman.conf\"",
             "$confContent = Get-Content $pacmanConf -Raw",
-            "$confContent = $confContent -replace '(?m)^\\[clangarm64\\]\\s+Include = /etc/pacman.d/mirrorlist.mingw', \"[git-for-windows-x86_64]`r`nServer = https://raw.githubusercontent.com/git-for-windows/pacman-repo/refs/heads/x86_64`r`nSigLevel = Never\"",
             "$confContent = $confContent -replace 'Include = /etc/pacman.d/mirrorlist.mingw', 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/$repo/'",
             "$confContent = $confContent -replace 'Include = /etc/pacman.d/mirrorlist.msys', 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch/'",
             "$confContent | Set-Content $pacmanConf -Encoding ASCII",
@@ -34,7 +33,7 @@
             "    $stopSentence = 'there is nothing to do'",
             "    # Using env var to isolate complex bash commands from PowerShell shell-escaping",
             "    $env:MSYS2_UP_CMD = \"pacman --ask 20 --noconfirm -Syuu --disable-download-timeout; $PS_KILL_CMD\"",
-            "    $env:MSYS2_INS_CMD = \"pacman --ask 20 --noconfirm -Syy --disable-download-timeout mingw-w64-x86_64-git mingw-w64-x86_64-git-credential-manager mingw-w64-x86_64-git-lfs zsh curl nano\"",
+            "    $env:MSYS2_INS_CMD = \"pacman --ask 20 --noconfirm -Syy --disable-download-timeout mingw-w64-ucrt-x86_64-git mingw-w64-ucrt-x86_64-git-credential-wincred zsh\"",
             "    $i = 0; $max = 5; $done = $false",
             "    Write-Host 'Updating MSYS2 packages...' -ForegroundColor Yellow",
             "    while (!$done) {",
@@ -58,14 +57,14 @@
     "bin": [
         [
             "msys2_shell.cmd",
-            "mingw64",
-            "-defterm -here -no-start -mingw64"
+            "ucrt64",
+            "-defterm -here -no-start -ucrt64"
         ]
     ],
     "shortcuts": [
         [
-            "mingw64.exe",
-            "MinGW64"
+            "ucrt64.exe",
+            "ucrt64"
         ]
     ],
     "checkver": {
