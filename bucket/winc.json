@@ -1,0 +1,33 @@
+{
+    "version": "0.1.626",
+    "description": "A fast, lightweight text editor built in Rust with its own rendering engine.",
+    "homepage": "https://winc.si",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/DEEIX-AI/Winc/releases/download/v0.1.626/Winc-0.1.626-windows-x64-portable.zip",
+            "hash": "8226559ec573eb0caccbee043166d00835ac93edd089b2f67679a20a30a45f9e"
+        }
+    },
+    "bin": "winc.exe",
+    "shortcuts": [
+        [
+            "winc.exe",
+            "Winc"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "github": "https://github.com/DEEIX-AI/Winc"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/DEEIX-AI/Winc/releases/download/v$version/Winc-$version-windows-x64-portable.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
