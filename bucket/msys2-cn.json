@@ -5,7 +5,7 @@
     "license": "GPL-2.0-only|BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/msys2-base-x86_64-20260927.tar.xz",
+            "url": "https://mirrors.cernet.edu.cn/msys2/distrib/x86_64/msys2-base-x86_64-20260927.tar.xz",
             "hash": "ea2f31a0b6ade63914ce441ffb022f0f6aa96982bfefa2326460a26d5fb01322",
             "extract_dir": "msys64"
         }
@@ -22,8 +22,8 @@
             "# 0x01: Edit pacman.conf (Using Never for GPG and TUNA mirrors)",
             "$pacmanConf = \"$dir\\etc\\pacman.conf\"",
             "$confContent = Get-Content $pacmanConf -Raw",
-            "$confContent = $confContent -replace 'Include = /etc/pacman.d/mirrorlist.mingw', 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/$repo/'",
-            "$confContent = $confContent -replace 'Include = /etc/pacman.d/mirrorlist.msys', 'Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch/'",
+            "$confContent = $confContent -replace 'Include = /etc/pacman.d/mirrorlist.mingw', 'Server = https://mirrors.cernet.edu.cn/msys2/mingw/$repo/'",
+            "$confContent = $confContent -replace 'Include = /etc/pacman.d/mirrorlist.msys', 'Server = https://mirrors.cernet.edu.cn/msys2/msys/$arch/'",
             "$confContent | Set-Content $pacmanConf -Encoding ASCII",
             "$env:PS_KILL_CMD = \"ps -ef | grep '[?]' | awk '{print `$2}' | xargs -r kill\"",
             "Invoke-ExternalCommand -LogPath \"$dir\\update.log\" -Path \"$dir\\msys2_shell.cmd\" -ArgumentList @('-msys2', '-defterm', '-here', '-no-start', '-c', 'eval \"$PS_KILL_CMD\"') | Out-Null",
@@ -68,14 +68,14 @@
         ]
     ],
     "checkver": {
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/",
+        "url": "https://mirrors.cernet.edu.cn/msys2/distrib/x86_64/",
         "re": "msys2-base-x86_64-(\\d+).tar.xz",
         "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/msys2-base-x86_64-$version.tar.xz"
+                "url": "https://mirrors.cernet.edu.cn/msys2/distrib/x86_64/msys2-base-x86_64-$version.tar.xz"
             }
         }
     }
